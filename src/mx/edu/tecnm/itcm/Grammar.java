@@ -149,7 +149,7 @@ public class Grammar {
                 int j = 0;
                 do {
                     d = r[j];
-                    s.add(new Short(d));
+                    s.add(d);
                     j++;
                 } while (epsilon[d] && j < r.length);
             }
@@ -186,7 +186,7 @@ public class Grammar {
         for (short i = 0; i < terminals.size; i++) {
             short c = terminals.convert(alphabet, i);
             if (mark[c])
-                s.add(new Short(i));
+                s.add(i);
         }
         return s;
     }
@@ -231,7 +231,7 @@ public class Grammar {
                 int l = n;
                 do {
                     if (l > 0 && r[l - 1] == variables.convert(alphabet, v))
-                        s.add(new Short(c));
+                        s.add(c);
                     l--;
                 } while (l > 0 && epsilon[r[l]]);
             }
@@ -270,7 +270,7 @@ public class Grammar {
         for (short i = 0; i < terminals.size; i++) {
             short c = terminals.convert(alphabet, i);
             if (mark[c])
-                s.add(new Short(i));
+                s.add(i);
         }
         return s;
     }
@@ -389,7 +389,7 @@ public class Grammar {
             derive[i] = new HashSet();
         for (int i = 0; i < nbProductions; i++) {
             Production p = productionsArray[i];
-            derive[alphabet.toShort(p.left)].add(new Integer(i));
+            derive[alphabet.toShort(p.left)].add(i);
             lgProductions += p.right.length();
         }
     }

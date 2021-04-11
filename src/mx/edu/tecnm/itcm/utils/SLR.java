@@ -77,13 +77,13 @@ public class SLR {
             LRShiftTable = LRShiftTable(a);
             LRReduceTable = LRReduceTable(a);
             terminal = a.terminal;
-        } catch (Exception e) {
-            System.out.print(e);
+        } catch (Exception exception) {
+            System.out.print(exception);
             System.exit(1);
         }
         expression = exp.toCharArray();
         stack = new Stack();
-        stack.push(new Integer(0));
+        stack.push(0);
     }
 
     /**
@@ -111,12 +111,11 @@ public class SLR {
      * the stack under input <code>c</code>.
      *
      * @param c the input character
-     * @return the state <code>next(p,c)</code>
      */
     public void push(short c) {
         Integer p = (Integer) stack.peek();
-        int q = LRShiftTable[p.intValue()][c];
-        stack.push(new Integer(q));
+        int q = LRShiftTable[p][c];
+        stack.push(q);
     }
 
     /**
@@ -168,7 +167,7 @@ public class SLR {
                 Set s = grammar.derive[r[j]];
                 for (Iterator k = s.iterator(); k.hasNext(); ) {
                     Integer I = (Integer) k.next();
-                    a.next[p + j].add(new HalfEdge("", initState[I.intValue()]));
+                    a.next[p + j].add(new HalfEdge("", initState[I]));
                 }
             }
         }
@@ -204,7 +203,7 @@ public class SLR {
                 if (n >= 0) {   //  reduction by production n.
                     Production p = grammar.productionsArray[n];
                     short v = grammar.variables.toShort(p.left);
-                    if (grammar.follow(v).contains(new Short(c))) {
+                    if (grammar.follow(v).contains(c)) {
                         if (LRShiftTable[i][c] != -1)
                             throw new Exception("Grammar not SLR: S/R conflict");
                         table[i][c] = n;
@@ -220,11 +219,11 @@ public class SLR {
         System.out.println(stack);
         while (true) {
             short c = current();
-            int p = ((Integer) stack.peek()).intValue();
+            int p = (Integer) stack.peek();
             int q = LRShiftTable[p][c];
             int r = LRReduceTable[p][c];
             if (q != -1) {
-                stack.push(new Integer(q));
+                stack.push(q);
                 advance();
                 System.out.println(stack);
                 if (c == alphabet.toShort('$'))

@@ -182,7 +182,7 @@ public class Alphabet {
         Set ss = new HashSet();
         for (Iterator i = s.iterator(); i.hasNext(); ) {
             short c = ((Short) i.next()).shortValue();
-            ss.add(new Character(toChar(c)));
+            ss.add(toChar(c));
         }
         return ss;
     }
@@ -212,7 +212,7 @@ public class Alphabet {
         Set C = new TreeSet();
         char[] data = new char[]{'a', '(', ')', '+', '-', '/', '*', ','};
         for (int i = 0; i < data.length; i++)
-            C.add(new Character(data[i]));
+            C.add(data[i]);
         Alphabet a = new Alphabet(C);
         System.out.println(C.toString());
         System.out.println(a.toString());
