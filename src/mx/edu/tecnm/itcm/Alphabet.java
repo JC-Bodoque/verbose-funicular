@@ -21,18 +21,18 @@ public class Alphabet {
     public char[] shortToChar;
 
     /**
-     * The Spanish alphabet.
+     * The english alphabet.
      */
-    public static Alphabet spanish() {
+    public static Alphabet () {
         char[] chars = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-        return new Alphabet(chars);
+        return new Alphabet english(chars);
     }
 
     /**
-     * The english alphabet.
+     * The spanish alphabet.
      */
-    public static Alphabet english() {
-        char[] chars = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
+    public static Alphabet spanish() {
+        char[] chars = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n','ñ', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'Ñ','O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
         return new Alphabet(chars);
     }
 
@@ -156,7 +156,7 @@ public class Alphabet {
 
     /**
      * Translates the String <code>w</code> to Short using the method
-     * toShort().
+     * <code>toShort()</code>.
      */
     public short[] toShort(String w) {
         int n = w.length();
@@ -206,26 +206,6 @@ public class Alphabet {
         String s = "";
         for (int i = 0; i < size; i++) s += toChar(i);
         return s;
-    }
-
-    public static void main(String[] args) {
-        Set C = new TreeSet();
-        char[] data = new char[]{'a', '(', ')', '+', '-', '/', '*', ','};
-        for (int i = 0; i < data.length; i++)
-            C.add(data[i]);
-        Alphabet a = new Alphabet(C);
-        System.out.println(C.toString());
-        System.out.println(a.toString());
-        Alphabet b = new Alphabet(data);
-        System.out.println(b.toString());
-        Alphabet c = new Alphabet(4);
-        System.out.println(c.toString());
-        Alphabet d = new Alphabet('0', 7);
-        System.out.println(d.toString());
-        Alphabet e = Alphabet.english();
-        System.out.println(e.toString());
-        Alphabet f = Alphabet.spanish();
-        System.out.println(f.toString());
     }
 }
 

@@ -126,7 +126,6 @@ public class DFA {
             a.next[5][1] = 0;
             a.next[6][0] = 0;
             a.next[6][1] = 5;
-            //a.t[1]=a.t[2]=a.t[3]= a.t[4]= a.t[6]=1;
             a.terminal = new Partition(t);
         } else {
             a.next[0][0] = 1;
@@ -143,25 +142,20 @@ public class DFA {
             a.next[5][1] = 6;
             a.next[6][0] = 6;
             a.next[6][1] = 6;
-            //a.t[1]=a.t[3]=a.t[5]= a.t[6]=1;
         }
         return a;
     }
 
     public String toString() {
         String s = "initial=" + initial + "\n";
-        //s +="terminal="+terminal.toString()+"\n";
         s += "nbStates=" + nbStates + "\n";
         s += "  ";
         s += "\n";
         StringBuffer u = new StringBuffer(s);
         for (int i = 0; i < nbStates; i++) {
-            //s+=i+" ";
             u.append(i + " ");
             for (int c = 0; c < nbLetters; c++)
-                //s+=next[i][c]+" ";System.out.print(s);
                 u.append(next[i][c] + " ");
-            //s+="\n";
             u.append("\n");
         }
         s = u + "terminals = " + terminal.blockList[1];
